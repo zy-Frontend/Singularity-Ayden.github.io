@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>angular中的工具方法总结 | 狮父等等我</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="工具方法：  angular.bind(obj1,obj) —改变this指向 参数方法: obj1: 改变后this指向的对象  obj: 被改变的对象    12345function show ()&amp;#123;	alert(this);&amp;#125;show();angular.bind(document,show)();  //改变this指向">
+<meta name="keywords" content="zhangyu,javascript,angular.forEach">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angular中的工具方法总结">
+<meta property="og:url" content="www.sfdwo.com/angular-gongjufangfa.html">
+<meta property="og:site_name" content="狮父等等我">
+<meta property="og:description" content="工具方法：  angular.bind(obj1,obj) —改变this指向 参数方法: obj1: 改变后this指向的对象  obj: 被改变的对象    12345function show ()&amp;#123;	alert(this);&amp;#125;show();angular.bind(document,show)();  //改变this指向">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-06T08:03:46.624Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="angular中的工具方法总结">
+<meta name="twitter:description" content="工具方法：  angular.bind(obj1,obj) —改变this指向 参数方法: obj1: 改变后this指向的对象  obj: 被改变的对象    12345function show ()&amp;#123;	alert(this);&amp;#125;show();angular.bind(document,show)();  //改变this指向">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">狮父等等我</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">时间轴</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+                    <a class="main-nav-link" href="/links">友链</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="www.sfdwo.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">时间轴</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                    <td><a class="main-nav-link" href="/links">友链</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="www.sfdwo.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">狮夫等等我</h2>
+            <h3 id="title">前端H5开发工程师</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/Singularity-Ayden">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                20
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                8
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/Singularity-Ayden" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-angular-gongjufangfa" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            angular中的工具方法总结
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/angular-gongjufangfa.html">
+            <time datetime="2017-03-02T11:37:43.000Z" itemprop="datePublished">2017-03-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/angular/">angular</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/angular/">angular</a>, <a class="tag-link" href="/tags/工具方法/">工具方法</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h5 id="工具方法："><a href="#工具方法：" class="headerlink" title="工具方法："></a>工具方法：</h5><hr>
+<ol>
+<li><p><code>angular.bind(obj1,obj)</code> —改变this指向<br> 参数方法: <code>obj1</code>: 改变后this指向的对象  <code>obj</code>: 被改变的对象  </p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span> (<span class="params"></span>)</span>&#123;</div><div class="line">	alert(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line">show();</div><div class="line">angular.bind(<span class="built_in">document</span>,show)();  <span class="comment">//改变this指向</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p><code>angular.extend(a,b)</code> — 继承方法<br> 参数方法：<code>a</code>:继承者  <code>b</code>:被继承</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123;</div><div class="line"> 	<span class="attr">name</span>:<span class="string">'hello'</span></div><div class="line"> &#125;</div><div class="line"> <span class="keyword">var</span> b = &#123;</div><div class="line"> 	<span class="attr">age</span>:<span class="string">'20'</span></div><div class="line"> &#125;</div><div class="line"> <span class="keyword">var</span> c = angular.extend(b,a) ;  <span class="comment">//将a 给了 b</span></div><div class="line"> <span class="built_in">console</span>.log(c); <span class="comment">// &#123;name:'hello',age:'20'&#125;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>angular.copy(a,b)</code> — 拷贝方法<br> 参数方法：将a的所有值赋给了b，并且取代覆盖了b</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//结构代码同上</span></div><div class="line"> <span class="keyword">var</span> c = angular.copy(a,b);  </div><div class="line"> <span class="built_in">console</span>.log(c); <span class="comment">// &#123;name:'hello'&#125;</span></div><div class="line"> <span class="built_in">console</span>.log(a); <span class="comment">// &#123;name:'hello'&#125;</span></div><div class="line"> <span class="built_in">console</span>.log(b); <span class="comment">// &#123;name:'hello'&#125;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>angular.isArray(需要判断的元素)</code> –是否为数组</p>
+</li>
+<li><p><code>angular.isDate()</code> –是否为日期对象</p>
+</li>
+<li><p><code>angular.isDefined()</code> –元素是否被定义</p>
+</li>
+<li><p><code>angular.isUnDefined()</code>  –元素是否未被定义</p>
+</li>
+<li><p><code>angular.isFunction()</code> –判断是否为function</p>
+</li>
+<li><p><code>angular.isNumber()</code></p>
+</li>
+<li><p><code>angular.isObject()</code></p>
+</li>
+<li><p><code>angular.isString()</code></p>
+</li>
+<li><p><code>angular.isElement(元素)</code></p>
+</li>
+<li><p><code>angular.version</code> – 输出当前使用的angular版本</p>
+</li>
+<li><p><code>angular.forEach(obj,fn,result)</code><br>参数说明：<code>obj</code>:被便利的数组或者对象   <code>fn(value,i)</code>:遍历后的回调函数  <code>result</code>:想要返回的结果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123;</div><div class="line">	<span class="attr">name</span>:<span class="string">'zhang'</span>,</div><div class="line">	<span class="attr">sex</span>:<span class="string">'boy'</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> result = [] ;</div><div class="line"></div><div class="line">angular.forEach(a,<span class="function"><span class="keyword">function</span>(<span class="params">value,i</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'value:'</span>+value+<span class="string">'\n'</span>+<span class="string">'i:'</span>+i);</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>) ; <span class="comment">//this指的是结果数组</span></div><div class="line">	<span class="keyword">this</span>.push(value);</div><div class="line">&#125;,result)</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(result); <span class="comment">// [zhang,boy];</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>angular.fromJson/toJson</code> – 对字符串格式的json 进行解析  和对json进行字符串转换，类似于原生JSON.parse()  JSON.stringify()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//angular.fromJson()</span></div><div class="line"><span class="keyword">var</span> str = <span class="string">'&#123;"name":"hello","age":"18"&#125;'</span> ;</div><div class="line"><span class="keyword">var</span> json = angular.fromJson(str);</div><div class="line"><span class="built_in">console</span>.log(json); <span class="comment">// &#123;name:hello,age:18&#125;</span></div><div class="line"><span class="comment">//angular.toJson()</span></div><div class="line"><span class="keyword">var</span> json = &#123;<span class="string">"name"</span>:<span class="string">"hello"</span>,<span class="string">"age"</span>:<span class="string">"18"</span>&#125;;</div><div class="line"><span class="keyword">var</span> str = angular.toJson(json,<span class="literal">true</span>);  <span class="comment">//true:表示按照格式打印</span></div><div class="line"><span class="built_in">console</span>.log(str) <span class="comment">// "&#123;"name":"hello","age":"18"&#125;"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>angular.lowercase()/uppercase()</code>  – 大小写转换</p>
+</li>
+<li><p><code>angular.element()</code> – angular 中封装的jq方法  具体方法参考<a href="https://docs.angularjs.org/api/ng/function/angular.element" target="_blank" rel="noopener">angular文档</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div'</span>);</div><div class="line">angular.element(oDiv).css(<span class="string">'backgroud'</span>,<span class="string">'red'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'div'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>angular.bootstrap</code> –angular 动态初始化angular 相同于 指令<code>ng-app</code><br>好处:可以在想要初始化的时候去执行初始化,针对多个angular初始化会同时初始化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">angular.bootstrap(<span class="built_in">document</span>,[<span class="string">'myapp'</span>,<span class="string">'myapp1'</span>])</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>angular.injector</code> – 在angular内部使用，注册器</p>
+</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/学习总结.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    ECMAscript6 学习总结
+                
+            </div>
+        </a>
+    
+    
+        <a href="/测试评论-都来玩玩.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">测试评论 都来玩玩</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/javascript-事件.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/javascript-事件.html" class="title"> javascript 事件</a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:59:11.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Css3实现背景毛玻璃效果.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Css3实现背景毛玻璃效果.html" class="title">Css3实现背景毛玻璃效果</a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:57:46.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/判断两个数组是否相等-判断两个对象是否相等.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/判断两个数组是否相等-判断两个对象是否相等.html" class="title">判断两个数组是否相等    &amp;&amp;   判断两个对象是否相等  </a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:56:27.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/JS日期格式化转换方法.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/JS日期格式化转换方法.html" class="title">JS日期格式化转换方法</a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:54:44.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Promise-异步编程的解决方案.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Promise-异步编程的解决方案.html" class="title">Promise 异步编程的解决方案</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T03:02:38.000Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动端web开发/">移动端web开发</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAscript6/">ECMAscript6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javscript/">javscript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web调试/">web调试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具方法/">工具方法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ECMAscript6/" style="font-size: 10px;">ECMAscript6</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/javscript/" style="font-size: 20px;">javscript</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/web调试/" style="font-size: 10px;">web调试</a> <a href="/tags/工具方法/" style="font-size: 20px;">工具方法</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Ayden Zhang<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

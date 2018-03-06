@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>ECMAscript6 学习总结 | 狮父等等我</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="变量声明–letlet特性  不可以重复申明 没有预解析过程（即变量声明提前） 块级作用域 ：一个变量或者函数只有在该区域才起作用  12345678910111213141516171819202122232425 &amp;#123; //块级作用域	let a = 1;	console.log(a) &amp;#125; //举个例子：for循环依次输出 0~10 for(var i = 0 ;i&amp;lt;1">
+<meta name="keywords" content="工具方法,ECMAscript6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAscript6 学习总结">
+<meta property="og:url" content="www.sfdwo.com/学习总结.html">
+<meta property="og:site_name" content="狮父等等我">
+<meta property="og:description" content="变量声明–letlet特性  不可以重复申明 没有预解析过程（即变量声明提前） 块级作用域 ：一个变量或者函数只有在该区域才起作用  12345678910111213141516171819202122232425 &amp;#123; //块级作用域	let a = 1;	console.log(a) &amp;#125; //举个例子：for循环依次输出 0~10 for(var i = 0 ;i&amp;lt;1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-06T08:03:32.150Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ECMAscript6 学习总结">
+<meta name="twitter:description" content="变量声明–letlet特性  不可以重复申明 没有预解析过程（即变量声明提前） 块级作用域 ：一个变量或者函数只有在该区域才起作用  12345678910111213141516171819202122232425 &amp;#123; //块级作用域	let a = 1;	console.log(a) &amp;#125; //举个例子：for循环依次输出 0~10 for(var i = 0 ;i&amp;lt;1">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">狮父等等我</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">时间轴</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+                    <a class="main-nav-link" href="/links">友链</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="www.sfdwo.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">时间轴</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                    <td><a class="main-nav-link" href="/links">友链</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="www.sfdwo.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">狮夫等等我</h2>
+            <h3 id="title">前端H5开发工程师</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/Singularity-Ayden">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                20
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                8
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/Singularity-Ayden" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-学习总结" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            ECMAscript6 学习总结
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/学习总结.html">
+            <time datetime="2017-03-06T11:42:45.000Z" itemprop="datePublished">2017-03-06</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/javascript/">javascript</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ECMAscript6/">ECMAscript6</a>, <a class="tag-link" href="/tags/工具方法/">工具方法</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="变量声明–let"><a href="#变量声明–let" class="headerlink" title="变量声明–let"></a><h6 style="color:green">变量声明–let</h6></h2><p><b>let特性</b></p>
+<ol>
+<li>不可以重复申明</li>
+<li>没有预解析过程（即变量声明提前）</li>
+<li><p>块级作用域 ：一个变量或者函数只有在该区域才起作用</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"> &#123; <span class="comment">//块级作用域</span></div><div class="line">	<span class="keyword">let</span> a = <span class="number">1</span>;</div><div class="line">	<span class="built_in">console</span>.log(a)</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="comment">//举个例子：for循环依次输出 0~10</span></div><div class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  	<span class="built_in">console</span>.log(i);<span class="comment">//解析：上述结果 输出10次i ，原因为每次for循环结束后 setTimeout还在走，所以输出的i还是全局的i，所以一直是10</span></div><div class="line">  &#125;,<span class="number">0</span>)</div><div class="line"> &#125;</div><div class="line"> <span class="comment">//我们若想依次输出0~10 我们可以使用一个闭包函数， 在闭包函数中会形成一个作用域，将i以形参的形式传入，这样每次执行循环的时候，变量就会存在于闭包作用域中。</span></div><div class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</div><div class="line">	 setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params">argument</span>) </span>&#123;</div><div class="line">		 <span class="built_in">console</span>.log(i);  <span class="comment">// 0,1,2,3,4,5,6,7,8,9,10</span></div><div class="line">	 &#125;)</div><div class="line">    &#125;)(i)</div><div class="line">&#125;</div><div class="line"><span class="comment">//在ecma6 中 我们可以使用let 来实现 ,let 将循环变成一个块级作用域，第一次循环完成之后，i就是那个0</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</div><div class="line">	setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params">argument</span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(i);  <span class="comment">// 0,1,2,3,4,5,6,7,8,9,10</span></div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ <a id="more"></a></li>
+<li>暂存死区   相似于 预解析  </li>
+</ol>
+<h2 id="常量声明–const"><a href="#常量声明–const" class="headerlink" title="常量声明–const"></a><h6 style="color:green">常量声明–const</h6></h2><p><b>const简介:</b>防止命名冲突  存一些东西用于对比  声明后不能被修改(变量值不可修改，若是一个对象是可以被修改的)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = <span class="number">1</span> ;</div><div class="line"><span class="built_in">console</span>.log(a) <span class="comment">//1</span></div><div class="line"><span class="comment">// const a = 2 ;</span></div><div class="line"><span class="built_in">console</span>.log(a) <span class="comment">//报错</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> b = &#123;<span class="attr">name</span>:<span class="number">1</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(a.name);</div><div class="line">ab.name = <span class="number">2</span> ;</div><div class="line"><span class="built_in">console</span>.log(a) <span class="comment">// &#123;name:2&#125;</span></div></pre></td></tr></table></figure>
+<h2 id="变量的“解构”赋值"><a href="#变量的“解构”赋值" class="headerlink" title="变量的“解构”赋值"></a><h6 style="color:green">变量的<b>“解构”</b>赋值</h6></h2><p><b>解构赋值简介:</b> Es6 允许按照一定的模式，通过一定的格式将数组和对象中的值提取出来，赋给变量<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span></div><div class="line"><span class="comment">//数组的解构赋值 ： 按照对应的顺序解构</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] ;</div><div class="line"><span class="keyword">var</span> [a,b,c] = arr ;</div><div class="line"><span class="built_in">console</span>.log(a,b,c)  <span class="comment">// 1,2,3</span></div><div class="line"><span class="keyword">var</span> arr1  = [<span class="number">1</span>,[<span class="number">2</span>,<span class="number">3</span>]] ;</div><div class="line"><span class="keyword">var</span> [d,[e,f]] =  arr ;</div><div class="line"><span class="built_in">console</span>.log(d,e,f)  <span class="comment">// 1,2,3</span></div><div class="line"><span class="comment">//对象的解构赋值 ： 按照 对象的属性名称进行解构   和顺序无关 ,方便从对象里面拿到对应的值</span></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">foo</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</div><div class="line">	<span class="attr">o</span>:&#123;&#125;,</div><div class="line">	<span class="attr">arr</span>:[],</div><div class="line">	<span class="attr">str</span>:<span class="string">'abc'</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> &#123;foo,o,arr,str&#125; = obj ;</div><div class="line"><span class="built_in">console</span>.log(foo,o,arr,str) ; <span class="comment">// function()&#123;&#125;  &#123;&#125;  []  abc    </span></div><div class="line"><span class="comment">//值的交换</span></div><div class="line"><span class="keyword">var</span> x = <span class="number">1</span> ;</div><div class="line"><span class="keyword">var</span> y = <span class="number">2</span> ;</div><div class="line"><span class="keyword">var</span> [x,y] = [y,x];</div><div class="line"><span class="built_in">console</span>.log(x,y) ; <span class="comment">//2 1</span></div><div class="line"><span class="string">`</span></div></pre></td></tr></table></figure></p>
+<h2 id="ES6字符串的扩展"><a href="#ES6字符串的扩展" class="headerlink" title="ES6字符串的扩展"></a><h6 style="color:green">ES6字符串的扩展</h6></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*模板字符串*/</span></div><div class="line"> <span class="keyword">var</span> name = <span class="string">'狮父'</span> ;</div><div class="line"> <span class="keyword">var</span> age = <span class="string">'18'</span> ;</div><div class="line"><span class="comment">//传统字符串拼接做法：</span></div><div class="line"> <span class="keyword">var</span> str = <span class="string">"你的名字是："</span>+name+<span class="string">"你的年龄是"</span>+age ;</div><div class="line"> <span class="built_in">console</span>.log(str)  </div><div class="line"><span class="comment">//使用模板字符串</span></div><div class="line"> varstr = <span class="string">`你的名字是<span class="subst">$&#123;name&#125;</span>,你的年龄是<span class="subst">$&#123;age&#125;</span>`</span>  <span class="comment">//注意：使用反引号 `do something` 来包含,&#123;&#125;中可以进行运算 和 对象.属性</span></div><div class="line"><span class="comment">/*字符串复制str.repeat(num);*/</span></div><div class="line"> <span class="keyword">var</span> str = a ;</div><div class="line"> <span class="built_in">console</span>.log(a.repeat(<span class="number">10</span>)) <span class="comment">// aaaaaaaaaa</span></div><div class="line"><span class="comment">/*字符串的查找 str.includes()*/</span></div><div class="line"> <span class="keyword">var</span> str = <span class="string">'abc'</span> ;</div><div class="line"> <span class="built_in">console</span>.log(str.includes(<span class="string">'a'</span>))  <span class="comment">//true</span></div><div class="line"><span class="comment">/*查找对应字符是否在首部或者尾部*/</span></div><div class="line"> <span class="keyword">var</span> str = <span class="string">"shifu"</span> ;</div><div class="line"> str.startsWith(<span class="string">'shi'</span>) <span class="comment">// true ;</span></div><div class="line"> str.endsWith(<span class="string">'u'</span>) ; <span class="comment">//true ;</span></div></pre></td></tr></table></figure>
+<h2 id="ES6数值的扩展"><a href="#ES6数值的扩展" class="headerlink" title="ES6数值的扩展"></a><h6 style="color:green">ES6数值的扩展</h6></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*二进制和八进制表示法:ES6提供使用前缀Ob和Oo表示 二进制八进制*/</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">0b11</span> ; <span class="comment">// 3</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">0o11</span> ; <span class="comment">// 9</span></div><div class="line"><span class="comment">/*Math 方法的扩展*/</span></div><div class="line"><span class="comment">// 取掉小数点</span></div><div class="line"><span class="keyword">var</span> num = <span class="number">1.234</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.trunc(num)) <span class="comment">// 1</span></div><div class="line"><span class="comment">//判断一个数字是正数负数,正0还是0</span></div><div class="line"><span class="keyword">var</span> num1 = <span class="number">0</span> ;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.sign(<span class="number">0</span>)) <span class="comment">//0 ;</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.sign(<span class="number">-0</span>)) <span class="comment">//  -0 ;</span></div><div class="line"><span class="comment">//勾股定理  返回所有平方和的平方根</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.hypot(<span class="number">3</span>,<span class="number">4</span>))  <span class="comment">//5</span></div></pre></td></tr></table></figure>
+<h2 id="ES6数组的扩展"><a href="#ES6数组的扩展" class="headerlink" title="ES6数组的扩展"></a><h6 style="color:green">ES6数组的扩展</h6></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*转数组*/</span></div><div class="line"><span class="meta">"use strict"</span></div><div class="line"><span class="keyword">var</span> divs = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)   <span class="comment">//获取到类数组</span></div><div class="line"><span class="comment">//es5做法</span></div><div class="line"><span class="keyword">var</span> ele = [].slice.call(<span class="string">'div'</span>) ; <span class="comment">// []</span></div><div class="line"><span class="comment">//es6 做法</span></div><div class="line"><span class="keyword">var</span> eles =  <span class="built_in">Array</span>.from(divs) ;   <span class="comment">//[]</span></div><div class="line"><span class="comment">//也可以字符串转数组</span></div><div class="line"><span class="keyword">var</span> str = <span class="string">'abc'</span> ;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(str))   <span class="comment">// ['a','b','c']</span></div><div class="line"><span class="comment">//将参数转换成数组   es5中:var arr = new Array(5) ,arr.length == 5 ;</span></div><div class="line"><span class="keyword">var</span> arr  = <span class="built_in">Array</span>.of(a,b,c,d,e) ;</div><div class="line"><span class="built_in">console</span>.log(arr)  <span class="comment">// [] ;</span></div><div class="line"><span class="comment">/*数组查找元素*/</span></div><div class="line"><span class="comment">//语法:arr.find()   arr.findIndex()</span></div><div class="line"><span class="comment">//参数:1.回掉函数  2.回掉函数中的this指向</span></div><div class="line"><span class="comment">//执行过程:遍历整个数组,遍历的过程中调用回调函数，如果回调函数的返回值为true，则返回当前正在遍历的元素，如果所有的元素都不符合条件则返回undefined</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] ;</div><div class="line"><span class="keyword">var</span> n = arr.find(<span class="function"><span class="keyword">function</span>(<span class="params">value,index,ar</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(value) ; <span class="comment">// 遍历的当前值  1</span></div><div class="line">	<span class="built_in">console</span>.log(index) ; <span class="comment">// 遍历值所处的位置索引 0</span></div><div class="line">	<span class="built_in">console</span>.log(ar) ; <span class="comment">// 当前正在遍历的数组本身  [1,2,3,4,5]</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>/<em>new</em>/</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/‘js中的跨域处理’.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    js中的跨域处理
+                
+            </div>
+        </a>
+    
+    
+        <a href="/angular-gongjufangfa.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">angular中的工具方法总结</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/javascript-事件.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/javascript-事件.html" class="title"> javascript 事件</a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:59:11.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Css3实现背景毛玻璃效果.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Css3实现背景毛玻璃效果.html" class="title">Css3实现背景毛玻璃效果</a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:57:46.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/判断两个数组是否相等-判断两个对象是否相等.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/判断两个数组是否相等-判断两个对象是否相等.html" class="title">判断两个数组是否相等    &amp;&amp;   判断两个对象是否相等  </a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:56:27.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/JS日期格式化转换方法.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/JS日期格式化转换方法.html" class="title">JS日期格式化转换方法</a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:54:44.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Promise-异步编程的解决方案.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Promise-异步编程的解决方案.html" class="title">Promise 异步编程的解决方案</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T03:02:38.000Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动端web开发/">移动端web开发</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAscript6/">ECMAscript6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javscript/">javscript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web调试/">web调试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具方法/">工具方法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ECMAscript6/" style="font-size: 10px;">ECMAscript6</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/javscript/" style="font-size: 20px;">javscript</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/web调试/" style="font-size: 10px;">web调试</a> <a href="/tags/工具方法/" style="font-size: 20px;">工具方法</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Ayden Zhang<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

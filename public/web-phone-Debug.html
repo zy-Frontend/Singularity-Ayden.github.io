@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>移动端web页面调试方法 | 狮父等等我</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="移动端web调试方法 *前言">
+<meta name="keywords" content="javscript,移动端,web调试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端web页面调试方法">
+<meta property="og:url" content="www.sfdwo.com/web-phone-Debug.html">
+<meta property="og:site_name" content="狮父等等我">
+<meta property="og:description" content="移动端web调试方法 *前言">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://cdn1.showjoy.com/images/9a/9a259c3bbf5d438399842c11d53054c9.png">
+<meta property="og:image" content="http://cdn1.showjoy.com/images/ad/add8ce371e0e4f52898fe4f652427f50.png">
+<meta property="og:image" content="http://cdn1.showjoy.com/images/d5/d53d31ba1bcd41749446ae158e923ed8.png">
+<meta property="og:image" content="http://cdn1.showjoy.com/images/42/42eadf2d9af545629e14387a9c6c64bf.png">
+<meta property="og:image" content="http://cdn1.showjoy.com/images/ca/ca2a26ecf08d4eca807ea1ec2374eee9.png">
+<meta property="og:image" content="http://cdn1.showjoy.com/images/42/426b2c9ab5504cc18c77b1da504e7270.png">
+<meta property="og:image" content="http://cdn1.showjoy.com/images/ae/ae11cb7dc7034bc4981503af603c6300.png">
+<meta property="og:image" content="http://cdn1.showjoy.com/images/ab/ab12718e529e4f03b1e17091e592b694.png">
+<meta property="og:image" content="http://cdn1.showjoy.com/images/ce/ce98e4652b7f47c99612a3081e4e785f.png">
+<meta property="og:image" content="http://cdn1.showjoy.com/images/b3/b38d848454e34984a0436989c4847139.png">
+<meta property="og:updated_time" content="2018-03-06T08:05:53.348Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端web页面调试方法">
+<meta name="twitter:description" content="移动端web调试方法 *前言">
+<meta name="twitter:image" content="http://cdn1.showjoy.com/images/9a/9a259c3bbf5d438399842c11d53054c9.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">狮父等等我</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">时间轴</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+                    <a class="main-nav-link" href="/links">友链</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="www.sfdwo.com"></form>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">时间轴</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                    <td><a class="main-nav-link" href="/links">友链</a></td>
+                
+                <td>
+                    
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="www.sfdwo.com"></form>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">狮夫等等我</h2>
+            <h3 id="title">前端H5开发工程师</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/Singularity-Ayden">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                20
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                8
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/Singularity-Ayden" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-web-phone-Debug" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            移动端web页面调试方法
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/web-phone-Debug.html">
+            <time datetime="2017-05-07T13:54:56.000Z" itemprop="datePublished">2017-05-07</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/移动端web开发/">移动端web开发</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/javscript/">javscript</a>, <a class="tag-link" href="/tags/web调试/">web调试</a>, <a class="tag-link" href="/tags/移动端/">移动端</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p></p><h1 style="color:green;width: 100%;text-align: center ">移动端web调试方法</h1><p></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="*前言"></a>*前言</h3><a id="more"></a>
+<blockquote>
+<div style="color:#D00750">移动端调试不同于桌面端调试，在桌面时代，chrome的调试器已经无比强大。但是在手机上调试web页面就没有这么原始的方式了。<br>  本文就如何调试移动端web页面，借鉴了一些博文和目前市面上好用的工具，针对移动端web页面以及APP内嵌webview页面如何调试做了一个试用和整理。<br>  先谈谈需求。<br>  最理想的方式是什么？</div>
+
+</blockquote>
+<h4 id="一-ios设备下"><a href="#一-ios设备下" class="headerlink" title="一.ios设备下"></a>一.ios设备下</h4><ol>
+<li>H5页面</li>
+<li>webview页面</li>
+</ol>
+<h4 id="二-安卓设备"><a href="#二-安卓设备" class="headerlink" title="二.安卓设备"></a>二.安卓设备</h4><ol>
+<li>H5页面</li>
+<li>webview页面</li>
+</ol>
+<p> 最理想的状态就是在上述四种情况下，H5页面在各种浏览器下都可以进行调试，且调试的方式跟PC chrome类似，包含js断点调试。webview页面在微信以及公司的APP产品内可以进行类似PC chrome类似的调试方式，包含js断点调试。</p>
+<h2 id="——————————–"><a href="#——————————–" class="headerlink" title="——————————–"></a>——————————–</h2><h3 id="IOS-设备"><a href="#IOS-设备" class="headerlink" title="IOS 设备"></a><span style="color:red">IOS 设备</span></h3><blockquote>
+<p>1、 ios safari + mac safari + iphone真机</p>
+<h4 id="调试safari浏览器的H5页面"><a href="#调试safari浏览器的H5页面" class="headerlink" title="调试safari浏览器的H5页面"></a>调试safari浏览器的H5页面</h4><p>启用功能：</p>
+</blockquote>
+<p>手机端：设置 → Safari → 高级 → Web 检查器 → 开。</p>
+<p>mac端：Safari → 偏好设置 → 高级 → 在菜单栏中显示“开发”菜单。</p>
+<p>然后就可以在电脑端调试iphone上的safari浏览器上的样式。在调试器及资源里可以对js打断点。操作方式跟chrome的调试器一样。不同的是我们是在手机上对页面进行操作，触发断点环境会更真实。</p>
+<p>若在js中埋入一些console，在IOS真机上执行一些操作，mac端safari上调试器能打印，这能极大的方便复杂手势的一些操作。</p>
+<h4 id="优点：包含js断点功能，调试方式跟桌面端chrome几乎一样"><a href="#优点：包含js断点功能，调试方式跟桌面端chrome几乎一样" class="headerlink" title="优点：包含js断点功能，调试方式跟桌面端chrome几乎一样"></a>优点：包含js断点功能，调试方式跟桌面端chrome几乎一样</h4><h4 id="缺点：只能在手机上的safari浏览器上操作，不能覆盖其他手机环境，另外也不支持webview的调试。"><a href="#缺点：只能在手机上的safari浏览器上操作，不能覆盖其他手机环境，另外也不支持webview的调试。" class="headerlink" title="缺点：只能在手机上的safari浏览器上操作，不能覆盖其他手机环境，另外也不支持webview的调试。"></a>缺点：只能在手机上的safari浏览器上操作，不能覆盖其他手机环境，另外也不支持webview的调试。</h4><blockquote>
+<p>2、 万金油 weinre + 真机</p>
+<h4 id="调试任意浏览器的H5页面以及webview页面"><a href="#调试任意浏览器的H5页面以及webview页面" class="headerlink" title="调试任意浏览器的H5页面以及webview页面"></a>调试任意浏览器的H5页面以及webview页面</h4></blockquote>
+<p>使用场景：有些时候样式在桌面chrome模拟是好的，但是在部分webview或者真机上就有问题。</p>
+<h4 id="第一步：npm-install-g-weinre"><a href="#第一步：npm-install-g-weinre" class="headerlink" title=". 第一步：npm install -g weinre"></a>. 第一步：npm install -g weinre</h4><h4 id="第二步：weinre-–boundHost-xx-ip"><a href="#第二步：weinre-–boundHost-xx-ip" class="headerlink" title=". 第二步：weinre –boundHost xx ip"></a>. 第二步：weinre –boundHost xx ip</h4><h4 id="类似于weinre-–boundHost-172-16-28-162"><a href="#类似于weinre-–boundHost-172-16-28-162" class="headerlink" title=". 类似于weinre –boundHost 172.16.28.162"></a>. 类似于weinre –boundHost 172.16.28.162</h4><h4 id="第三步：此时weinre会返回一个可用的地址"><a href="#第三步：此时weinre会返回一个可用的地址" class="headerlink" title=". 第三步：此时weinre会返回一个可用的地址"></a>. 第三步：此时weinre会返回一个可用的地址</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2015-12-14T03:58:50.349Z weinre: starting server at http://10.1.2.77:8080</div></pre></td></tr></table></figure>
+<p>也可以指定端口号</p>
+<h4 id="weinre-httpPort-8081-boundHost-172-16-28-162"><a href="#weinre-httpPort-8081-boundHost-172-16-28-162" class="headerlink" title="weinre --httpPort 8081 --boundHost 172.16.28.162"></a><code>weinre --httpPort 8081 --boundHost 172.16.28.162</code></h4><h4 id="第四步：可以访问之前weinre分配过来的地址，进入后在页面最上部分可以看到-Access-Points-下的-debug-client-user-interface-http-10-1-2-77-8080-client-anonymous"><a href="#第四步：可以访问之前weinre分配过来的地址，进入后在页面最上部分可以看到-Access-Points-下的-debug-client-user-interface-http-10-1-2-77-8080-client-anonymous" class="headerlink" title=". 第四步：可以访问之前weinre分配过来的地址，进入后在页面最上部分可以看到 Access Points 下的 debug client user interface http://10.1.2.77:8080/client/#anonymous"></a>. 第四步：可以访问之前weinre分配过来的地址，进入后在页面最上部分可以看到 <code>Access Points</code> 下的 <code>debug client user interface http://10.1.2.77:8080/client/#anonymous</code></h4><p><img src="http://cdn1.showjoy.com/images/9a/9a259c3bbf5d438399842c11d53054c9.png" alt="效果"></p>
+<p>这是之后要点击的链接 ，我们先往当前网页下方看。可以看到 <code>Target Script</code>栏目</p>
+<p><img src="http://cdn1.showjoy.com/images/ad/add8ce371e0e4f52898fe4f652427f50.png" alt="效果"></p>
+<p>我们需要将<code>Example</code>的<code>script</code>标签复制粘贴到需要调试的项目中去。</p>
+<h4 id="第五步：开启本地静态服务器（XMAPP等），进入到需要调试的项目的页面，例如http-10-1-2-77-8000-index-html我是利用nodejs开的一个小型服务器。"><a href="#第五步：开启本地静态服务器（XMAPP等），进入到需要调试的项目的页面，例如http-10-1-2-77-8000-index-html我是利用nodejs开的一个小型服务器。" class="headerlink" title=". 第五步：开启本地静态服务器（XMAPP等），进入到需要调试的项目的页面，例如http://10.1.2.77:8000/index.html我是利用nodejs开的一个小型服务器。"></a>. 第五步：开启本地静态服务器（XMAPP等），进入到需要调试的项目的页面，例如<code>http://10.1.2.77:8000/index.html</code>我是利用<code>nodejs</code>开的一个小型服务器。</h4><p><img src="http://cdn1.showjoy.com/images/d5/d53d31ba1bcd41749446ae158e923ed8.png" alt="XI"></p>
+<h4 id="第六步：此时可以回到第四步中的weine分配给你的地址，"><a href="#第六步：此时可以回到第四步中的weine分配给你的地址，" class="headerlink" title=". 第六步：此时可以回到第四步中的weine分配给你的地址，"></a>. 第六步：此时可以回到第四步中的weine分配给你的地址，</h4><p><img src="http://cdn1.showjoy.com/images/42/42eadf2d9af545629e14387a9c6c64bf.png" alt="SA"><br>点击第一条<code>debug client user interface: http://10.1.2.77:8080/client/#anonymous</code>,进入预备调试页面。</p>
+<h4 id="第七步：在预备调试页面我们可以看到"><a href="#第七步：在预备调试页面我们可以看到" class="headerlink" title=". 第七步：在预备调试页面我们可以看到"></a>. 第七步：在预备调试页面我们可以看到</h4><p><img src="http://cdn1.showjoy.com/images/ca/ca2a26ecf08d4eca807ea1ec2374eee9.png" alt="asd"><br><code>Targets</code>下有一条可以选择的调试页面，对应着刚刚在本地静态服务器中打开的页面。但是这个页面是PC的，现在我们通过手机（浏览器、APP、微信等）进入这个项目ip地址<code>http://10.1.2.77:8000/index.html</code><br>此时预备调试页面将会出现两条可调试地址<br><img src="http://cdn1.showjoy.com/images/42/426b2c9ab5504cc18c77b1da504e7270.png" alt="as"><br>选择手机端进入后新增的地址。</p>
+<h4 id="第八步：点开链接后链接状态从蓝色变成绿色，然后再点击页面左上角的Element按钮。"><a href="#第八步：点开链接后链接状态从蓝色变成绿色，然后再点击页面左上角的Element按钮。" class="headerlink" title=".第八步：点开链接后链接状态从蓝色变成绿色，然后再点击页面左上角的Element按钮。"></a>.第八步：点开链接后链接状态从蓝色变成绿色，然后再点击页面左上角的Element按钮。</h4><p><img src="http://cdn1.showjoy.com/images/ae/ae11cb7dc7034bc4981503af603c6300.png" alt="a"><br>现在就可以在pc端调试，手机端直接显示修改的变化啦。</p>
+<h4 id="优点：为何称weinre为万金油呢？因为只要在需要调试的项目的文件中引入weinre给出的-lt-scrip-标签，再配合本地静态服务器的ip。可以在任何ios或安卓机型的包括浏览器和app的webview中去调试。"><a href="#优点：为何称weinre为万金油呢？因为只要在需要调试的项目的文件中引入weinre给出的-lt-scrip-标签，再配合本地静态服务器的ip。可以在任何ios或安卓机型的包括浏览器和app的webview中去调试。" class="headerlink" title="优点：为何称weinre为万金油呢？因为只要在需要调试的项目的文件中引入weinre给出的&lt;scrip 标签，再配合本地静态服务器的ip。可以在任何ios或安卓机型的包括浏览器和app的webview中去调试。"></a>优点：为何称weinre为万金油呢？因为只要在需要调试的项目的文件中引入weinre给出的&lt;scrip 标签，再配合本地静态服务器的ip。可以在任何ios或安卓机型的包括浏览器和app的webview中去调试。</h4><h4 id="缺点：-weinre不支持js的断点调试，这是一个缺憾，并且要在项目中引入额外的调试js标签。"><a href="#缺点：-weinre不支持js的断点调试，这是一个缺憾，并且要在项目中引入额外的调试js标签。" class="headerlink" title="缺点： weinre不支持js的断点调试，这是一个缺憾，并且要在项目中引入额外的调试js标签。"></a>缺点： weinre不支持js的断点调试，这是一个缺憾，并且要在项目中引入额外的调试js标签。</h4><p>但是对于js断点，可以在js逻辑中埋入console，然后在手机端真实操作，再在pc端的调试器中查看打印信息这种方式来代替。</p>
+<blockquote>
+<p>3、MIHTool</p>
+<h4 id="调试chrome-safari浏览器的H5页面"><a href="#调试chrome-safari浏览器的H5页面" class="headerlink" title="调试chrome safari浏览器的H5页面"></a>调试chrome safari浏览器的H5页面</h4><p>注意关闭翻墙代理噢。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于weinre 开发的一款APP， 只针对ios手机。大概使用方式是在APP内打开需要调试的页面，相应的在pc端浏览器会出现调试器，方可进行调试。<br>使用MIHTool的最大优点之一在于不需要显式的引入调试所需的脚本。在此基础上，作者还增加了一些方便的功能。</p>
+</blockquote>
+<h4 id="1-Performance-API"><a href="#1-Performance-API" class="headerlink" title="1. Performance API."></a>1. Performance API.</h4><h4 id="2-Polyfill管理器-模拟javascript与Native-App互相调用-demo"><a href="#2-Polyfill管理器-模拟javascript与Native-App互相调用-demo" class="headerlink" title="2. Polyfill管理器(模拟javascript与Native App互相调用,demo)"></a>2. Polyfill管理器(模拟javascript与Native App互相调用,demo)</h4><h4 id="3-NPM-Modules-在-web-inspector-console-里通过-require-加载-npm-模块"><a href="#3-NPM-Modules-在-web-inspector-console-里通过-require-加载-npm-模块" class="headerlink" title="3. NPM Modules (在 web inspector console 里通过 require() 加载 npm 模块)"></a>3. NPM Modules (在 web inspector console 里通过 require() 加载 npm 模块)</h4><p>具体可以看官网：<a href="http://www.mihtool.com/" target="_blank" rel="noopener">http://www.mihtool.com/</a></p>
+<blockquote>
+<p>4、ios模拟器 + mac safari</p>
+</blockquote>
+<h4 id="调试safari浏览器的H5页面（可进行js断点调试）"><a href="#调试safari浏览器的H5页面（可进行js断点调试）" class="headerlink" title="调试safari浏览器的H5页面（可进行js断点调试）"></a>调试safari浏览器的H5页面（可进行js断点调试）</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在没有真机的情况下，可以采用模拟机的方式去运行ios系统下的safari浏览器，然后在safari浏览器内输入想要调试的页面。当然模拟ios系统必须在Xcode这个开发软件下进行。一旦在Xcode里开启了模拟机，再进入模拟机里的safari，之后按照上边介绍过的真机 safari + mac safari介绍的方式进行操作便可。</p>
+<p><img src="http://cdn1.showjoy.com/images/ab/ab12718e529e4f03b1e17091e592b694.png" alt="a"></p>
+<blockquote>
+<p>5、ios模拟器 + mac safari</p>
+</blockquote>
+<h4 id="调试公司APP内的webview页面（可进行js断点调试）"><a href="#调试公司APP内的webview页面（可进行js断点调试）" class="headerlink" title="调试公司APP内的webview页面（可进行js断点调试）"></a>调试公司APP内的webview页面（可进行js断点调试）</h4><p>参考 <a href="https://github.com/paulirish/iOS-WebView-App" target="_blank" rel="noopener">https://github.com/paulirish/iOS-WebView-App</a>，因为不懂IOS开发，也不知道是如何进行的，但大概是在iOS项目内写一些方法抛出一个地址，然后在mac上的safari开发模式内识别出这个地址，然后就可以调试的。默认情况下，mac safari只能识别usb连接的ios设备上的safari浏览器上的H5页面。（上面介绍过）</p>
+<h1 id=""><a href="#" class="headerlink" title="==========================================="></a>===========================================</h1><h3 id="Android-设备"><a href="#Android-设备" class="headerlink" title="Android 设备"></a><span style="color:red">Android 设备</span></h3><blockquote>
+<p>1、Android chrome 真机 + pc chrome</p>
+</blockquote>
+<h4 id="调试移动端浏览器的H5页面（可进行js断点调试）"><a href="#调试移动端浏览器的H5页面（可进行js断点调试）" class="headerlink" title="调试移动端浏览器的H5页面（可进行js断点调试）"></a>调试移动端浏览器的H5页面（可进行js断点调试）</h4><p>在安卓4.4版本以下的安卓机子，手机上安装了chrome的情况下，并且打开需要调试的页面，可以打开usb开发者模式，在pc端chrome地址栏输入chrome://inspect便可找到相应的手机的相应打开wap页面。调试方法跟pc chrome几乎一致。</p>
+<p>在第一次使用的时候点击inspect会弹出空白的调试页面，这个时候需要翻墙，再点inspect才会出现正常的调试页面。</p>
+<h4 id="优点：可进行js断点调试。"><a href="#优点：可进行js断点调试。" class="headerlink" title="优点：可进行js断点调试。"></a>优点：可进行js断点调试。</h4><h4 id="缺点：浏览器限制。"><a href="#缺点：浏览器限制。" class="headerlink" title="缺点：浏览器限制。"></a>缺点：浏览器限制。</h4><h4 id="调试公司APP内的webview页面（可进行js断点调试）-1"><a href="#调试公司APP内的webview页面（可进行js断点调试）-1" class="headerlink" title="调试公司APP内的webview页面（可进行js断点调试）"></a>调试公司APP内的webview页面（可进行js断点调试）</h4><p>在安卓4.4版本以上的安卓机子，手机通过usb连接mac电脑后，手机打开usb开发者模式后，在电脑chrome的chrome://inspect页面里会找到除了手机浏览器打开的页面，还会找到App内打开的webview的页面。</p>
+<p><img src="http://cdn1.showjoy.com/images/ce/ce98e4652b7f47c99612a3081e4e785f.png" alt="a"></p>
+<p>点开<code>inspect</code>就是一个调试界面。</p>
+<p>进行webview页面的调试 需要在应用的代码内设置才能生效（根据<a href="https://github.com/yujiangshui/CN-Chrome-DevTools/blob/remote-debugging/md/Use-Tools/remote-debugging.md#%E8%B0%83%E8%AF%95-webviews" target="_blank" rel="noopener">https://github.com/yujiangshui/CN-Chrome-DevTools/blob/remote-debugging/md/Use-Tools/remote-debugging.md#%E8%B0%83%E8%AF%95-webviews</a>）</p>
+<blockquote>
+<p>2、Android 模拟机 + pc chrome</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;安卓模拟机配置成功的情况下调试的方式跟上面1方法是一样的，在安卓4.4版本以上才能进行webview的调试。<br>&nbsp;&nbsp;&nbsp;&nbsp;下面就介绍下大名鼎鼎的安卓模拟器genymotion.个人使用是免费的。</p>
+<ol>
+<li>在其官网注册（必须）<a href="https://www.genymotion.com/" target="_blank" rel="noopener">https://www.genymotion.com/</a></li>
+<li>在其官网下载最新的软件，下载完将genymotion和genymotion shell都放到应用程序内。</li>
+<li>下完这个之后还需要下载virtualBox，<a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="noopener">https://www.virtualbox.org/wiki/Downloads</a></li>
+<li>之后就可以选择不同版本的模拟器了，网上的教程都是推荐下载安卓4.3版本，因为4.3版本有对应的补丁，装上后可以避免一些应用下载失败。但4.3版本不支持调试webview。我推荐下载 HTC one 4.4.4版本，本人试了很多版本，只有这个可以调试我司App内嵌的H5页面。</li>
+</ol>
+<p><img src="http://cdn1.showjoy.com/images/b3/b38d848454e34984a0436989c4847139.png" alt="a"></p>
+<p>推荐一个专门讲解genymotion的资源。<br><a href="http://www.ziliao1.com/Article/Show/DCDFC03FE4902A1AC353C74695DAC2E9.html" target="_blank" rel="noopener">http://www.ziliao1.com/Article/Show/DCDFC03FE4902A1AC353C74695DAC2E9.html</a><br>以及模拟机版本下载失败的解决办法<br><a href="http://www.cnblogs.com/wliangde/p/3678649.html" target="_blank" rel="noopener">http://www.cnblogs.com/wliangde/p/3678649.html</a></p>
+<blockquote>
+<p>3、万金油 weinre + pc chrome</p>
+</blockquote>
+<h4 id="调试任意浏览器的H5页面以及webview页面-1"><a href="#调试任意浏览器的H5页面以及webview页面-1" class="headerlink" title="调试任意浏览器的H5页面以及webview页面"></a>调试任意浏览器的H5页面以及webview页面</h4><p>这个方法在之上iOS 部分已经讲解过了。weinre通吃安卓与ios，兼容性不要太高。</p>
+<blockquote>
+<p>4、微信调试</p>
+</blockquote>
+<h4 id="调试微信客户端的webview页面（支持js断点调试）"><a href="#调试微信客户端的webview页面（支持js断点调试）" class="headerlink" title="调试微信客户端的webview页面（支持js断点调试）"></a>调试微信客户端的webview页面（支持js断点调试）</h4><p>目前微信已经出了官方的调试工具，照着做就好了。<br><a href="http://blog.qqbrowser.cc/" target="_blank" rel="noopener">http://blog.qqbrowser.cc/</a></p>
+<blockquote>
+<p>5、UC浏览器 + 真机 + mac chrome</p>
+</blockquote>
+<h4 id="调试uc浏览器的H5页面（支持js断点）"><a href="#调试uc浏览器的H5页面（支持js断点）" class="headerlink" title="调试uc浏览器的H5页面（支持js断点）"></a>调试uc浏览器的H5页面（支持js断点）</h4><p>方法一是真机加上chrome浏览器，这个方法是真机加uc浏览器，<br><a href="http://www.uc.cn/business/developer/" target="_blank" rel="noopener">http://www.uc.cn/business/developer/</a></p>
+<p>++++++++++++++++++++++++++++++++++<br>++++++++++++++++++++++++++++++++++</p>
+<p><span style="color:red">总结</span></p>
+<h4 id="上面罗列的多种方法，在本地开发的情况下基本都已经覆盖到了。但是如果线上页面出现bug了。该怎么办？最快的方法直接对线上页面进行调试。"><a href="#上面罗列的多种方法，在本地开发的情况下基本都已经覆盖到了。但是如果线上页面出现bug了。该怎么办？最快的方法直接对线上页面进行调试。" class="headerlink" title="上面罗列的多种方法，在本地开发的情况下基本都已经覆盖到了。但是如果线上页面出现bug了。该怎么办？最快的方法直接对线上页面进行调试。"></a>上面罗列的多种方法，在本地开发的情况下基本都已经覆盖到了。但是如果线上页面出现bug了。该怎么办？最快的方法直接对线上页面进行调试。</h4><p>先介绍一下mac抓包工具<code>charles</code></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&mid=400497314&idx=1&sn=850fad741fdb635c2403bafb2f1e636f&scene=1&srcid=1119TqsnfhBHSKzA2BUja9mk&key=ac89cba618d2d97693fea624e810ff69a7385f5209ab2a26ec029ca8f618e760e87de444299655bad41c5d1a7dbbc76e&ascene=0&uin=Mjg1NTY1OTY2MA%3D%3D&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.10.4+build(14E46" target="_blank" rel="noopener">charles 教程</a></p>
+<p>1、截取http网络封包<br>2、支持修改网络请求参数<br>3、支持网络请求的截获并动态修改<br>4、支持重发网络请求<br>5、模拟网速网络</p>
+<p>刚刚给出的链接中有charles的全方位解读，我这里就简单介绍下http网络封包。</p>
+<p>在pc上charles可以很容易的创建一个代理，将设定的一部分网络请求全部转到charles代理上，并且可以将其中某个资源map到本地，从而实现使用本地代码调试线上代码的功能。</p>
+<p>但是我们现在是调试手机等移动端设备，但稍微做一些设置，就可以实现通过pc上的charles去代理移动端去请求资源。然后将需要的资源map到本地，进行修改和调试。</p>
+<p>这样设置过后的效果就是，在pc端修改代码，移动端线上的页面去请求本地修改后的代码并展示。</p>
+<p>讲完了charles,问题回到如何快速调试线上页面。</p>
+<h4 id="如果是H5页面"><a href="#如果是H5页面" class="headerlink" title="如果是H5页面"></a>如果是H5页面</h4><p>遇上H5页面在PCchrome调试器上跟真实手机上的效果不一致时，可以使用万金油weinre，结合charles，就可以调试这种机型各种浏览器上的问题了。当然也可以使用上面提到的其他方法，都是适用的。</p>
+<h4 id="如果是webview"><a href="#如果是webview" class="headerlink" title="如果是webview"></a>如果是webview</h4><p>同样不能少的是charles抓包，如果是安卓可以配合genymotion模拟器进行模拟。使用方法上文讲述过，再推荐一篇专门的文章：<a href="http://div.io/topic/1449。这篇文章讲到如何用charles监听genymotion。" target="_blank" rel="noopener">http://div.io/topic/1449。这篇文章讲到如何用charles监听genymotion。</a><br>如果是ios，也可以采用这样的方式，即模拟器+charles+mac safari。使用方法在上文的ios章节讲述过。<br>当然也是可以使用万金油weinre。weinre+charles调试App内的H5页面也是很方便的。跟上面两种方法比较，缺少的就是js断点调试功能。</p>
+<p>===========================================</p>
+<h4 id="声明-本文转载自lvdada的博客"><a href="#声明-本文转载自lvdada的博客" class="headerlink" title="声明:本文转载自lvdada的博客"></a>声明:本文转载自<a href="http://lvdada.org/2015/12/20/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95/" target="_blank" rel="noopener">lvdada的博客</a></h4><h4 id="完！"><a href="#完！" class="headerlink" title="完！"></a>完！</h4><h4 id="借鉴-原创文章，转载请注明出处！"><a href="#借鉴-原创文章，转载请注明出处！" class="headerlink" title="借鉴+原创文章，转载请注明出处！"></a>借鉴+原创文章，转载请注明出处！</h4>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/Object.assign.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Object.assign
+                
+            </div>
+        </a>
+    
+    
+        <a href="/闭包实现倒计时程序.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">干货--使用闭包实现js倒计时功能</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/javascript-事件.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/javascript-事件.html" class="title"> javascript 事件</a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:59:11.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Css3实现背景毛玻璃效果.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Css3实现背景毛玻璃效果.html" class="title">Css3实现背景毛玻璃效果</a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:57:46.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/判断两个数组是否相等-判断两个对象是否相等.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/判断两个数组是否相等-判断两个对象是否相等.html" class="title">判断两个数组是否相等    &amp;&amp;   判断两个对象是否相等  </a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:56:27.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/JS日期格式化转换方法.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/JS日期格式化转换方法.html" class="title">JS日期格式化转换方法</a></p>
+                            <p class="item-date"><time datetime="2018-03-06T06:54:44.000Z" itemprop="datePublished">2018-03-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/Promise-异步编程的解决方案.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/Promise-异步编程的解决方案.html" class="title">Promise 异步编程的解决方案</a></p>
+                            <p class="item-date"><time datetime="2018-02-23T03:02:38.000Z" itemprop="datePublished">2018-02-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动端web开发/">移动端web开发</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAscript6/">ECMAscript6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javscript/">javscript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web调试/">web调试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具方法/">工具方法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ECMAscript6/" style="font-size: 10px;">ECMAscript6</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/javscript/" style="font-size: 20px;">javscript</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/web调试/" style="font-size: 10px;">web调试</a> <a href="/tags/工具方法/" style="font-size: 20px;">工具方法</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Ayden Zhang<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
