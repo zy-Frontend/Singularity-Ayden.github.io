@@ -1,7 +1,10 @@
 ---
 title: Promise 异步编程的解决方案
-date: 2018-02-23 11:02:38
+date: 2016-08-09 11:02:38
 tags:
+- es6
+categories:
+- EcmaJs6
 ---
 
 

@@ -2,11 +2,10 @@
 title: 移动端web页面调试方法
 date: 2017-05-07 21:54:56
 tags:
-- javscript
-- 移动端
+- js
 - web调试
 categories:
-- 移动端web开发
+- web调试
 ---
 <h1 style="color:green;width: 100%;text-align: center ">移动端web调试方法</h1>
 ### *前言

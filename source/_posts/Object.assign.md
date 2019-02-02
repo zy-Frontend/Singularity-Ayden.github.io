@@ -1,6 +1,10 @@
 ---
 title: Object.assign
+date: 2016-08-18 11:01:54
 tags:
+- es6
+categories:
+- EcmaJs6
 ---
 Es5中实现
 

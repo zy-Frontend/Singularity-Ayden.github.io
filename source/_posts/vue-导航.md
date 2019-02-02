@@ -1,7 +1,10 @@
 ---
 title: vue  导航
-date: 2018-02-23 10:57:18
+date: 2017-05-23 10:57:18
 tags:
+- vuejs
+categories:
+- VUE
 ---
 
 >学习工具

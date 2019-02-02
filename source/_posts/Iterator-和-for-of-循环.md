@@ -1,7 +1,10 @@
 ---
 title: Iterator 和 for...of 循环
-date: 2018-02-23 11:01:54
+date: 2016-08-23 11:01:54
 tags:
+- es6
+categories:
+- EcmaJs6
 ---
 
 
@@ -17,7 +20,7 @@ tags:
 
 <!-- more -->
 
-#####示例1：  iterator数组的读取
+##### 示例1：  iterator数组的读取
 
 ```javascript
 {

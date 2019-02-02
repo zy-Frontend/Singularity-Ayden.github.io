@@ -1,7 +1,10 @@
 ---
 title: Es6 模块化
-date: 2018-02-23 10:57:59
+date: 2016-09-01 10:57:59
 tags:
+- es6
+categories:
+- EcmaJs6
 ---
 
 > 基本概念

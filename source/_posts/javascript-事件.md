@@ -1,7 +1,11 @@
 ---
 title: ' javascript 事件'
-date: 2018-03-06 14:59:11
+date: 2017-08-06 14:59:11
 tags:
+- js
+categories:
+- Javascript
+
 
 ---
 
@@ -10,11 +14,11 @@ tags:
 
 
 
-####鼠标事件
+#### 鼠标事件
 `click`  `dbclick`  `mouseup`  `mousedown` `mousemove` `mouseover` `mouseenter`  `mouseout` `mouseleave`
-####滚轮事件
+#### 滚轮事件
 `wheel`
-####键盘事件
+#### 键盘事件
 `keydown`  `keypress`  `keyup`
 
 <!-- more -->
@@ -22,7 +26,7 @@ tags:
 `abort` `error` `load` `loadstart`  `loadend`  `progress`  `timeout`   
 #### 拖拽事件
 `drag`  `dragstart`  `dragend`  `dragenter` `dragover` `dragleave`  `drop`
-####触摸事件
+#### 触摸事件
 `touchstart`  `touchend`  `toumove`  `touchcancel`
 #### 表单事件
 `input`  `select`  `change`  `reset` `submit`
@@ -34,21 +38,21 @@ tags:
 
 
 
->####二、事件传播的三个阶段
+>#### 二、事件传播的三个阶段
 
-#####1.捕获阶段
+##### 1.捕获阶段
 
 从 `window` 对象传导到目标阶段的过程
 
-#####2.目标阶段
+##### 2.目标阶段
 
 当事件在目标节点出发的过程
 
-#####3.冒泡阶段
+##### 3.冒泡阶段
 
 从目标阶段传导回`window`对象的过程
 
-####代码示意：
+#### 代码示意：
 
 
 
@@ -95,20 +99,20 @@ tags:
 </html>
 ```
 
-####图示：
+#### 图示：
 
 ![Alt text](https://app.yinxiang.com/shard/s72/res/8d53d1e2-c43a-408c-9e3f-a10bef9354ae)
 
 
-####<span style="color:red">注意：</span>
+#### <span style="color:red">注意：</span>
 
-#####用户点击网页的时候，浏览器总是假定click事件的目标节点，就是点击位置的嵌套最深的那个节点（嵌套在`<div>`节点的`<p>`节点）。所以，`<p>`节点的捕获阶段和冒泡阶段，都会显示为target阶段。
+##### 用户点击网页的时候，浏览器总是假定click事件的目标节点，就是点击位置的嵌套最深的那个节点（嵌套在`<div>`节点的`<p>`节点）。所以，`<p>`节点的捕获阶段和冒泡阶段，都会显示为target阶段。
 
 
 
->####三、事件代理
+>#### 三、事件代理
 
-#####由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理（delegation）。
+##### 由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理（delegation）。
 
 ```html  
  <ul>
@@ -161,7 +165,7 @@ tags:
 ```
 
 
-####`stopPropagation`  和  `stopImmediatePropagation` 区别 ：
+#### `stopPropagation`  和  `stopImmediatePropagation` 区别 ：
 
 　　在事件处理程序中，每个事件处理程序中间都会有一个event对象，而这个event对象有两个方法，一个是stopPropagation方法，一个是stopImmediatePropagation方法，两个方法只差一个Immediate，这里就说说这两个方法的区别
 
@@ -193,6 +197,6 @@ tags:
 
 
 <hr>
-####版权说明：
+#### 版权说明：
 阮一峰大神 [javascript标准参考教程](http://javascript.ruanyifeng.com/dom/event.html#toc8)
 超载的笨鸟 [浅谈javascript中stopImmediatePropagation函数和stopPropagation函数的区别](http://www.cnblogs.com/dqsBK/p/6287907.html)

@@ -4,9 +4,8 @@ date: 2017-03-02 19:37:43
 keywords: zhangyu,javascript,angular.forEach
 tags:
 - angular
-- 工具方法
 categories:
-- angular
+- Angular
 ---
 
 ##### 工具方法：

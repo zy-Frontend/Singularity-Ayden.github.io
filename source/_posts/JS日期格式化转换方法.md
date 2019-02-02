@@ -1,10 +1,14 @@
 ---
 title: JS日期格式化转换方法
-date: 2018-03-06 14:54:44
+date: 2017-05-06 14:54:44
 tags:
+- js
+categories:
+- Javascript
+
 ---
 
-> #####将日期转换为指定的格式：比如转换成 年月日时分秒 这种格式：yyyy-MM-dd hh:mm:ss 或者 yyyy-MM-dd
+>##### 将日期转换为指定的格式：比如转换成 年月日时分秒 这种格式：yyyy-MM-dd hh:mm:ss 或者 yyyy-MM-dd
 ```javascript
 
 
@@ -43,7 +47,7 @@ console.log(time2);
 ```
 
 <!-- more -->
-> #####将指定的日期转换为"年月日"的格式，代码如下：
+>##### 将指定的日期转换为"年月日"的格式，代码如下：
 
 ```javascript
    var oldTime = (new Date("2012/12/25 20:11:11")).getTime();
@@ -52,7 +56,7 @@ console.log(time2);
 ```
 
 
->  #####将 "时间戳" 转换为 "年月日" 的格式.
+>##### 将 "时间戳" 转换为 "年月日" 的格式.
 
 ```javascript
     var da = 1402233166999;

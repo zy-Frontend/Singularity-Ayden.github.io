@@ -1,13 +1,16 @@
 ---
 title: Decorators 修饰器
-date: 2018-02-23 10:59:00
+date: 2016-10-17 10:59:00
 tags:
+- es6
+categories:
+- EcmaJs6
 ---
 >简介：修饰器是一个函数，用于修饰类的行为（修改 扩展类的功能，修饰器只在类的范围使用）。
 
  需安装：npm install babel-plugin-transform-decorators-legacy --save-dev
 
-####1.限制某个属性 是只读的
+#### 1.限制某个属性 是只读的
 
 
 ```javascript
@@ -41,7 +44,7 @@ tags:
 
 <!-- more -->
 
-####2.在类的外面 使用修饰器  （必须在class的前面使用）
+#### 2.在类的外面 使用修饰器  （必须在class的前面使用）
 
 ```javascript
 {

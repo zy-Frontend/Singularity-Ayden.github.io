@@ -1,7 +1,10 @@
 ---
 title: Symbol数据类型
-date: 2018-02-23 11:01:11
+date: 2016-10-21 11:01:11
 tags:
+- es6
+categories:
+- EcmaJs6
 ---
 
 

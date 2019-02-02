@@ -1,7 +1,10 @@
 ---
 title: Generator 生成器
-date: 2018-02-23 10:59:33
+date: 2016-08-23 10:59:33
 tags:
+- es6
+categories:
+- EcmaJs6
 ---
 >什么是 **Generator**？
 
@@ -82,7 +85,7 @@ border-left: 5px solid gray;    return 'c'
 
 
 
-####实例1：抽奖次数限制
+#### 实例1：抽奖次数限制
 
 ```javascript
 {
@@ -125,7 +128,7 @@ border-left: 5px solid gray;    return 'c'
 
 ![Alt text | center](https://app.yinxiang.com/shard/s72/res/1e0566ee-6bb8-4d67-9e1c-cb73b82ebfa3)
 
-####实例2：长轮询的generator实现
+#### 实例2：长轮询的generator实现
 
 ```javascript
 // 实例2   长轮询 ： 服务端数据 定期变化，前端 需要定时去取。之前 通过定时器不断的取  现在使用 generator
